@@ -1,0 +1,1 @@
+This repository  contain all materials of Rakhat Oshakbayev from  Justcode Academy course called "Golang developer".
