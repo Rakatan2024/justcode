@@ -1,5 +1,5 @@
 package hw1
-
+// У этой функции time complexity O(2n)=O(n), так как у нас простые два цикла идущие друг за другом.
 func Compare(slice1, slice2 []int) bool {
 	map1 := make(map[int]int,len(slice1))
 	map2 := make(map[int]int,len(slice2))

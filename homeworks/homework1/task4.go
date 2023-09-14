@@ -4,6 +4,7 @@ type MyStruct struct {
 	slice1 []int
 }
 
+// У этой функции  time complexity О(n^2), так как мы имее два цикла один из которых вложен в другой.
 func (m *MyStruct) sort() []int {
 	for i := 0; i < len(m.slice1)-1; i++ {
 		swapped := false

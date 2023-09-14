@@ -1,8 +1,33 @@
 package hw1
 
-import "fmt"
+import (
+	"fmt"
+)
 
 var flag = true
+
+// func TestCompare1(t *testing.T) {
+// 	testCases := []struct {
+// 		slice1 []int
+// 		slice2 []int
+// 		equal  bool
+// 	}{
+// 		{[]int{1, 2, 3}, []int{1, 2, 3}, true},
+// 		{[]int{3, 2, 1}, []int{1, 2, 3}, true},
+// 		{[]int{1, 2, 3}, []int{1, 2, 4}, false},
+// 		{[]int{1, 2, 3}, []int{1, 2}, false},
+// 		{[]int{}, []int{}, true},
+// 	}
+
+// 	for _, testCase := range testCases {
+// 		t.Run(fmt.Sprintf("Compare(%v, %v)", testCase.slice1, testCase.slice2), func(t *testing.T) {
+// 			result := Compare(testCase.slice1, testCase.slice2)
+// 			if result != testCase.equal {
+// 				t.Errorf("Expected Compare(%v, %v) to be %v, but got %v", testCase.slice1, testCase.slice2, testCase.equal, result)
+// 			}
+// 		})
+// 	}
+// }
 
 func TestCompare() {
 	testCases := []struct {
@@ -76,12 +101,21 @@ func TestStruct() {
 		{MyStruct{slice1: []int{}}, []int{}},
 	}
 	for _, testCase := range testCases {
-		result := testCase.myStruct.sort()
-		if !Compare(testCase.result, result) {
-			fmt.Printf("Expected sort() to be %v, but got %v", testCase.result, result)
+		realResult := testCase.myStruct.sort()
+		if !compareforTest(testCase.result, realResult) {
+			fmt.Printf("Expected sort() to be %v, but got %v", testCase.result, realResult)
 			flag = false
 		}
 	}
+}
+
+func compareforTest(slice1 []int, slice2 []int) bool {
+	for i := 0; i < len(slice1); i++ {
+		if slice1[i] != slice2[i] {
+			return false
+		}
+	}
+	return true
 }
 
 func RunTests() {
